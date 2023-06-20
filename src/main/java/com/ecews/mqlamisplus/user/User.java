@@ -2,10 +2,9 @@ package com.ecews.mqlamisplus.user;
 
 
 /*import com.ecews.mqlamisplus.models.DestinationPerson;*/
-import com.ecews.mqlamisplus.models.hts.DestinationHtsClient;
-import com.ecews.mqlamisplus.models.hts.DestinationIndexElicitation;
-import com.ecews.mqlamisplus.models.hts.HtsClient;
-import com.ecews.mqlamisplus.models.hts.IndexElicitation;
+import com.ecews.mqlamisplus.models.laboratory.*;
+import com.ecews.mqlamisplus.models.lims.*;
+import com.ecews.mqlamisplus.models.pmtc.*;
 import com.ecews.mqlamisplus.repository.*;
 import com.ecews.mqlamisplus.repository.DestinationArtPharmacyRepo.DestinationArtPharmacyRepo;
 import com.ecews.mqlamisplus.config.MessagingConfig;
@@ -128,6 +127,72 @@ public class User {
 
     @Autowired
     DestinationHtsClientService destinationHtsClientService;
+
+    @Autowired
+    DestinationRiskStratificationRepo destinationRiskStratificationRepo;
+
+    @Autowired
+    DestinationRiskStratificationService destinationRiskStratificationService;
+
+    @Autowired
+    DestinationLabOrderService destinationLabOrderService;
+
+    @Autowired
+    DestinationLabOrderRepo destinationLabOrderRepo;
+
+    @Autowired
+    DestinationResultService destinationResultService;
+
+    @Autowired
+    DestinationResultRepo destinationResultRepo;
+
+    @Autowired
+    DestinationSampleService destinationSampleService;
+
+    @Autowired
+    DestinationSampleRepo destinationSampleRepo;
+
+    @Autowired
+    DestinationTestService destinationTestService;
+
+    @Autowired
+    DestinationTestRepo destinationTestRepo;
+
+    @Autowired
+    DestinationLIMSManifestService destinationLIMSManifestService;
+    @Autowired
+    DestinationLIMSManifestRepo destinationLIMSManifestRepo;
+
+    @Autowired
+    DestinationLIMSSampleService destinationLIMSSampleService;
+
+    @Autowired
+    DestinationLIMSSampleRepo destinationLIMSSampleRepo;
+
+    @Autowired
+    DestinationLIMSResultRepo destinationLIMSResultRepo;
+
+    @Autowired
+    DestinationLIMSResultService destinationLIMSResultService;
+
+    @Autowired
+    DestinationAncService destinationAncService;
+
+    @Autowired
+    DestinationAncRepo destinationAncRepo;
+
+    @Autowired
+    DestinationDeliveryRepo destinationDeliveryRepo;
+
+    @Autowired
+    DestinationDeliveryService destinationDeliveryService;
+
+    @Autowired
+    DestinationPmtctEnrollmentService destinationPmtctEnrollmentService;
+
+    @Autowired
+    DestinationPmtctEnrollmentRepo destinationPmtctEnrollmentRepo;
+
 
 
 
@@ -693,79 +758,467 @@ public class User {
 //        }
 //    }
 
-
+//    @RabbitListener(queues = MessagingConfig.HTSCLIENTQUEUE)
+//    public void consumeMessageHtsClientQueue(HtsClient htsClient) {
 //
-//    @RabbitListener(queues = MessagingConfig.INDEXELICITATIONQUEUE)
-//    public void consumeMessageIndexElicitationQueue(IndexElicitation indexElicitation) {
-//
-//        DestinationIndexElicitation destinationIndexElicitation = destinationIndexElicitationService.convertToDestinationIndexElicitationService(indexElicitation);
+//        DestinationHtsClient destinationHtsClient = destinationHtsClientService.convertToDestinationHtsClient(htsClient);
 //
 //        // Check if the record with the same UUID already exists in the destination database
 //
 //
 //
 //
-//        DestinationIndexElicitation existingdestinationIndexElicitation = destinationIndexElicitationRepo.findByUuid(indexElicitation.getUuid());
+//        DestinationHtsClient existingDestinationHtsClient = destinationHtsClientRepo.findByUuid(htsClient.getUuid());
 //
 //
-//        if (existingdestinationIndexElicitation != null) {
+//        if (existingDestinationHtsClient != null) {
 //
 ////            // Update the existing record with the new data
 //
 //
-//            destinationIndexElicitationRepo.save(existingdestinationIndexElicitation);
+//            destinationHtsClientRepo.save(existingDestinationHtsClient);
 //
-//            System.out.println("IndexElicitation record already exists in the destination database record updated: " + existingdestinationIndexElicitation);
+//            System.out.println("IndexElicitation record already exists in the destination database record updated: " + existingDestinationHtsClient);
 //
 //        } else {
 //            // Insert a new record in the destination database
-//            destinationIndexElicitation.setId(null);
+//            destinationHtsClient.setId(null);
 //
-//            destinationIndexElicitationRepo.save(existingdestinationIndexElicitation);
+//            destinationHtsClientRepo.save(destinationHtsClient);
 //
-//            System.out.println("New IndexElicitation record inserted into the destination database: " + existingdestinationIndexElicitation);
+//            System.out.println("New IndexElicitation record inserted into the destination database: " + destinationHtsClient);
+////        }
+//
+////
+//        }
+
+
+
+
+
+
+//        @RabbitListener(queues = MessagingConfig.RISKSTRATIFICATIONQUEUE)
+//        public void consumeMessageIndexElicitationQueue(RiskStratification riskStratification) {
+//
+//            DestinationRiskStratification destinationRiskStratification = destinationRiskStratificationService.convertToDestinationRiskStratification(riskStratification);
+//
+//            // Check if the record with the same UUID already exists in the destination database
+//
+//
+//
+//
+//            DestinationRiskStratification existingdestinationRiskStratification = destinationRiskStratificationRepo.findById(riskStratification.getId());
+//
+//
+//            if (existingdestinationRiskStratification != null) {
+//
+////            // Update the existing record with the new data
+//
+//
+//                destinationRiskStratificationRepo.save(existingdestinationRiskStratification);
+//
+//                System.out.println("RiskStratification record already exists in the destination database record updated: " + existingdestinationRiskStratification);
+//
+//            } else {
+//                // Insert a new record in the destination database
+////                destinationRiskStratification.setId(null);
+//
+//                destinationRiskStratificationRepo.save(existingdestinationRiskStratification);
+//
+//                System.out.println("New RiskStratification record inserted into the destination database: " + existingdestinationRiskStratification);
+////        }
+//
+////
+//            }
+//        }
+//
+
+
+
+//    @RabbitListener(queues = MessagingConfig.LABORDERQUEUE)
+//    public void consumeMessageLabOrderQueue(LabOrder labOrder) {
+//
+//        DestinationLabOrder destinationLabOrder = destinationLabOrderService.convertToDestinationLabOrder(labOrder);
+//
+//        // Check if the record with the same UUID already exists in the destination database
+//
+//
+//
+//
+//        DestinationLabOrder existingdestinationLabOrder = destinationLabOrderRepo.findByUuid(destinationLabOrder.getUuid());
+//
+//
+//        if (existingdestinationLabOrder != null) {
+//
+////            // Update the existing record with the new data
+//
+//
+//            destinationLabOrderRepo.save(existingdestinationLabOrder);
+//
+//            System.out.println("LabOrder record already exists in the destination database record updated: " + existingdestinationLabOrder);
+//
+//        } else {
+//            // Insert a new record in the destination database
+////                destinationRiskStratification.setId(null);
+//
+//            destinationLabOrderRepo.save(destinationLabOrder);
+//
+//            System.out.println("New LabOrder record inserted into the destination database: " + destinationLabOrder);
 ////        }
 //
 ////
 //        }
 //    }
+//
 
 
-    @RabbitListener(queues = MessagingConfig.HTSCLIENTQUEUE)
-    public void consumeMessageHtsClientQueue(HtsClient htsClient) {
 
-        DestinationHtsClient destinationHtsClient = destinationHtsClientService.convertToDestinationHtsClient(htsClient);
+//    @RabbitListener(queues = MessagingConfig.RESULTQUEUE)
+//    public void consumeMessageResultQueue(Result result) {
+//
+//        DestinationResult destinationResult = destinationResultService.convertToDestinationResult(result);
+//
+//        // Check if the record with the same UUID already exists in the destination database
+//
+//
+//
+//
+//        DestinationResult existingDestinationResult = destinationResultRepo.findByUuid(result.getUuid());
+//
+//
+//        if (existingDestinationResult != null) {
+//
+////            // Update the existing record with the new data
+//
+//
+//            destinationResultRepo.save(existingDestinationResult);
+//
+//            System.out.println("DestinationResult record already exists in the destination database record updated: " + existingDestinationResult);
+//
+//        } else {
+//            // Insert a new record in the destination database
+////                destinationRiskStratification.setId(null);
+//
+//            destinationResultRepo.save(destinationResult);
+//
+//            System.out.println("New DestinationResult record inserted into the destination database: " + destinationResult);
+////        }
+//
+////
+//        }
+//    }
+//
+
+
+
+//    @RabbitListener(queues = MessagingConfig.SAMPLEQUEUE)
+//    public void consumeMessageSampleQueue(Sample sample) {
+//
+//        DestinationSample destinationSample = destinationSampleService.convertToDestinationSample(sample);
+//
+//        // Check if the record with the same UUID already exists in the destination database
+//
+//
+//
+//
+//        DestinationSample existingDestinationSample = destinationSampleRepo.findByUuid(sample.getUuid());
+//
+//
+//        if (existingDestinationSample != null) {
+//
+////            // Update the existing record with the new data
+//
+//
+//            destinationSampleRepo.save(existingDestinationSample);
+//
+//            System.out.println("DestinationSample record already exists in the destination database record updated: " + existingDestinationSample);
+//
+//        } else {
+//            // Insert a new record in the destination database
+////                destinationRiskStratification.setId(null);
+//
+//            destinationSampleRepo.save(destinationSample);
+//
+//            System.out.println("New DestinationSample record inserted into the destination database: " + destinationSample);
+////        }
+//
+////
+//        }
+//    }
+//
+
+
+//    @RabbitListener(queues = MessagingConfig.TESTQUEUE)
+//    public void consumeMessageSampleQueue(Test test) {
+//
+//        DestinationTest destinationTest = destinationTestService.convertToDestinationTest(test);
+//
+//        // Check if the record with the same UUID already exists in the destination database
+//
+//
+//
+//
+//        DestinationTest existingDestinationTest = destinationTestRepo.findByUuid(test.getUuid());
+//
+//
+//        if (existingDestinationTest != null) {
+//
+////            // Update the existing record with the new data
+//
+//
+//            destinationTestRepo.save(existingDestinationTest);
+//
+//            System.out.println("Test record already exists in the destination database record updated: " + existingDestinationTest);
+//
+//        } else {
+//            // Insert a new record in the destination database
+////                destinationRiskStratification.setId(null);
+//
+//            destinationTestRepo.save(destinationTest);
+//
+//            System.out.println("New DestinationSample record inserted into the destination database: " + destinationTest);
+////        }
+//
+////
+//        }
+//    }
+//
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+//
+//
+//    @RabbitListener(queues = MessagingConfig.LIMSMANIFESTQUEUE)
+//    public void consumeMessageLIMSManifestQueue(LIMSManifest limsManifest) {
+//
+//        DestinationLIMSManifest destinationLIMSManifest = destinationLIMSManifestService.convertToDestinationLIMSManifest(limsManifest);
+//
+//        // Check if the record with the same UUID already exists in the destination database
+//
+//
+//
+//
+//        DestinationLIMSManifest existingdestinationLIMSManifest = destinationLIMSManifestRepo.findByUuid(limsManifest.getUuid());
+//
+//
+//        if (existingdestinationLIMSManifest != null) {
+//
+////            // Update the existing record with the new data
+//
+//
+//            destinationLIMSManifestRepo.save(existingdestinationLIMSManifest);
+//
+//            System.out.println("LIMSManifest record already exists in the destination database record updated: " + existingdestinationLIMSManifest);
+//
+//        } else {
+//            // Insert a new record in the destination database
+////                destinationRiskStratification.setId(null);
+//
+//            destinationLIMSManifestRepo.save(destinationLIMSManifest);
+//
+//            System.out.println("New LIMSManifest record inserted into the destination database: " + destinationLIMSManifest);
+////        }
+//
+////
+//        }
+//    }
+//
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+//    @RabbitListener(queues = MessagingConfig.LIMSSAMPLEQUEUE)
+//    public void consumeMessageLIMSSampleQueue(LIMSSample limsSample) {
+//
+//        DestinationLIMSSample destinationLIMSSample = destinationLIMSSampleService.convertToDestinationLIMSSample(limsSample);
+//
+//        // Check if the record with the same UUID already exists in the destination database
+//
+//
+//
+//
+//        DestinationLIMSSample existingdestinationLIMSSample = destinationLIMSSampleRepo.findByUuid(limsSample.getUuid());
+//
+//
+//        if (existingdestinationLIMSSample != null) {
+//
+////            // Update the existing record with the new data
+//
+//
+//            destinationLIMSSampleRepo.save(existingdestinationLIMSSample);
+//
+//            System.out.println("LIMSSample record already exists in the destination database record updated: " + existingdestinationLIMSSample);
+//
+//        } else {
+//            // Insert a new record in the destination database
+////                destinationRiskStratification.setId(null);
+//
+//            destinationLIMSSampleRepo.save(destinationLIMSSample);
+//
+//            System.out.println("New LIMSSample record inserted into the destination database: " + destinationLIMSSample);
+////        }
+//
+////
+//        }
+//    }
+////
+////
+//
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+//    @RabbitListener(queues = MessagingConfig.LIMSRESULTQUEUE)
+//    public void consumeMessageLIMSResultQueue(LIMSResult limsResult) {
+//
+//        DestinationLIMSResult destinationLIMSResult = destinationLIMSResultService.convertToDestinationLIMSResult(limsResult);
+//
+//        // Check if the record with the same UUID already exists in the destination database
+//
+//
+//
+//
+//        DestinationLIMSResult existingdestinationdestinationLIMSResult = destinationLIMSResultRepo.findByUuid(limsResult.getUuid());
+//
+//
+//        if (existingdestinationdestinationLIMSResult != null) {
+//
+////            // Update the existing record with the new data
+//
+//
+//            destinationLIMSResultRepo.save(existingdestinationdestinationLIMSResult);
+//
+//            System.out.println("LIMSResult record already exists in the destination database record updated: " + existingdestinationdestinationLIMSResult);
+//
+//        } else {
+//            // Insert a new record in the destination database
+////                destinationRiskStratification.setId(null);
+//
+//            destinationLIMSResultRepo.save(destinationLIMSResult);
+//
+//            System.out.println("New LIMSResult record inserted into the destination database: " + destinationLIMSResult);
+////        }
+//
+////
+//        }
+//    }
+////
+////
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+//    @RabbitListener(queues = MessagingConfig.ANCQUEUE)
+//    public void consumeMessageAncQueue(ANC anc) {
+//
+//        DestinationAnc destinationAnc = destinationAncService.convertToDestinationAnc(anc);
+//
+//        // Check if the record with the same UUID already exists in the destination database
+//
+//
+//
+//
+//        DestinationAnc existingDestinationdestinationAnc = destinationAncRepo.findByUuid(anc.getUuid());
+//
+//
+//        if (existingDestinationdestinationAnc != null) {
+//
+////            // Update the existing record with the new data
+//
+//
+//            destinationAncRepo.save(existingDestinationdestinationAnc);
+//
+//            System.out.println("ANC record already exists in the destination database record updated: " + existingDestinationdestinationAnc);
+//
+//        } else {
+//            // Insert a new record in the destination database
+////                destinationRiskStratification.setId(null);
+//
+//            destinationAncRepo.save(destinationAnc);
+//
+//            System.out.println("New ANC record inserted into the destination database: " + destinationAnc);
+////        }
+//
+////
+//        }
+//    }
+////
+////
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+//    @RabbitListener(queues = MessagingConfig.DELIVERYQUEUE)
+//    public void consumeMessageDeliveryQueue(Delivery delivery) {
+//
+//        DestinationDelivery destinationDelivery = destinationDeliveryService.convertToDestinationDelivery(delivery);
+//
+//        // Check if the record with the same UUID already exists in the destination database
+//
+//
+//
+//
+//        DestinationDelivery existingDestinationDelivery = destinationDeliveryRepo.findByUuid(delivery.getUuid());
+//
+//
+//        if (existingDestinationDelivery != null) {
+//
+////            // Update the existing record with the new data
+//
+//
+//            destinationDeliveryRepo.save(existingDestinationDelivery);
+//
+//            System.out.println("Delivery record already exists in the destination database record updated: " + existingDestinationDelivery);
+//
+//        } else {
+//            // Insert a new record in the destination database
+////                destinationRiskStratification.setId(null);
+//
+//            destinationDeliveryRepo.save(destinationDelivery);
+//
+//            System.out.println("New Delivery record inserted into the destination database: " + destinationDelivery);
+////        }
+//
+////
+//        }
+//    }
+////
+////
+
+
+
+
+    @RabbitListener(queues = MessagingConfig.PMTCTQUEUE)
+    public void consumeMessageDeliveryQueue(PMTCTEnrollment pmtctEnrollment) {
+
+        DestinationPMTCTEnrollment destinationPMTCTEnrollment = destinationPmtctEnrollmentService.convertToDestinationPMTCTEnrollment(pmtctEnrollment);
 
         // Check if the record with the same UUID already exists in the destination database
 
 
 
 
-        DestinationHtsClient existingDestinationHtsClient = destinationHtsClientRepo.findByUuid(htsClient.getUuid());
+        DestinationPMTCTEnrollment existingdestinationPMTCTEnrollment = destinationPmtctEnrollmentRepo.findByUuid(pmtctEnrollment.getUuid());
 
 
-        if (existingDestinationHtsClient != null) {
+        if (existingdestinationPMTCTEnrollment != null) {
 
 //            // Update the existing record with the new data
 
 
-            destinationHtsClientRepo.save(existingDestinationHtsClient);
+            destinationPmtctEnrollmentRepo.save(existingdestinationPMTCTEnrollment);
 
-            System.out.println("IndexElicitation record already exists in the destination database record updated: " + existingDestinationHtsClient);
+            System.out.println("Delivery record already exists in the destination database record updated: " + existingdestinationPMTCTEnrollment);
 
         } else {
             // Insert a new record in the destination database
-            destinationHtsClient.setId(null);
+//                destinationRiskStratification.setId(null);
 
-            destinationHtsClientRepo.save(destinationHtsClient);
+            destinationPmtctEnrollmentRepo.save(destinationPMTCTEnrollment);
 
-            System.out.println("New IndexElicitation record inserted into the destination database: " + destinationHtsClient);
+            System.out.println("New Delivery record inserted into the destination database: " + destinationPMTCTEnrollment);
 //        }
 
 //
         }
     }
-
-
-
+//
+//
 }

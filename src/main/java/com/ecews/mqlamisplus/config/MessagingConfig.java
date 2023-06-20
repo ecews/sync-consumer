@@ -42,6 +42,30 @@ public class MessagingConfig {
 
     public static final String HTSCLIENTQUEUE = "hts_client_queue";
 
+    public static final String RISKSTRATIFICATIONQUEUE = "risk_stratification_queue";
+
+    public static final String LABORDERQUEUE = "lab_order_queue";
+
+
+    public static final String RESULTQUEUE = "result_queue";
+
+    public static final String SAMPLEQUEUE = "sample_queue";
+
+    public static final String TESTQUEUE = "test_queue";
+
+    public static final String LIMSMANIFESTQUEUE = "lims_manifest_queue";
+
+
+    public static final String LIMSSAMPLEQUEUE = "lims_sample_queue";
+
+    public static final String LIMSRESULTQUEUE = "lims_result_queue";
+
+    public static final String ANCQUEUE = "anc_queue";
+
+    public static final String DELIVERYQUEUE = "delivery_queue";
+
+    public static final String PMTCTQUEUE = "pmtct_queue";
+
 
     @Bean
     public MessageConverter messageConverter(){

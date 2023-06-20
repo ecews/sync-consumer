@@ -277,14 +277,11 @@ public class DestinationHtsClient extends Audit implements Serializable {
     private Object indexNotificationServicesElicitation;
 
 
-
+//
 //    @OneToMany(mappedBy = "htsClient")
 //    @ToString.Exclude
 //    @JsonIgnore
 //    public List<DestinationIndexElicitation> destinationIndexElicitations;
-//
-//
-
 
 
     @OneToOne
