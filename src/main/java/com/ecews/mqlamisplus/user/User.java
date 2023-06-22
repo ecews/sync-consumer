@@ -2,10 +2,10 @@ package com.ecews.mqlamisplus.user;
 
 
 /*import com.ecews.mqlamisplus.models.DestinationPerson;*/
-import com.ecews.mqlamisplus.models.hts.DestinationHtsClient;
-import com.ecews.mqlamisplus.models.hts.DestinationIndexElicitation;
-import com.ecews.mqlamisplus.models.hts.HtsClient;
-import com.ecews.mqlamisplus.models.hts.IndexElicitation;
+import com.ecews.mqlamisplus.models.Person.DestinationEncounter;
+import com.ecews.mqlamisplus.models.Person.Encounter;
+import com.ecews.mqlamisplus.models.pmtc.*;
+import com.ecews.mqlamisplus.models.prep.*;
 import com.ecews.mqlamisplus.repository.*;
 import com.ecews.mqlamisplus.repository.DestinationArtPharmacyRepo.DestinationArtPharmacyRepo;
 import com.ecews.mqlamisplus.config.MessagingConfig;
@@ -128,6 +128,67 @@ public class User {
 
     @Autowired
     DestinationHtsClientService destinationHtsClientService;
+
+    @Autowired
+    DestinationInfantArvService destinationInfantArvService;
+
+    @Autowired
+    DestinationInfantArvRepo destinationInfantArvRepo;
+
+    @Autowired
+    DestinationInfantMotherArtService destinationInfantMotherArtService;
+
+    @Autowired
+    DestinationInfantMotherArtRepo destinationInfantMotherArtRepo;
+
+    @Autowired
+    DestinationInfantPCRTestService destinationInfantPCRTestService;
+
+    @Autowired
+    DestinationInfantPCRTestRepo destinationInfantPCRTestRepo;
+
+    @Autowired
+    DestinationInfantVisitService destinationInfantVisitService;
+    @Autowired
+    DestinationInfantVisitRepo destinationInfantVisitRepo;
+
+    @Autowired
+    DestinationPmtctVisitService destinationPmtctVisitService;
+
+    @Autowired
+    DestinationPmtctVisitRepo destinationPmtctVisitRepo;
+
+    @Autowired
+    DestinationPrepEligibilityRepo destinationPrepEligibilityRepo;
+
+    @Autowired
+    DestinationPrepEligibilityService destinationPrepEligibilityService;
+
+    @Autowired
+    DestinationPrepEnrollmentRepo destinationPrepEnrollmentRepo;
+
+    @Autowired
+    DestinationPrepEnrollmentService destinationPrepEnrollmentService;
+
+    @Autowired
+    DestinationPrepClinicService destinationPrepClinicService;
+
+    @Autowired
+    DestinationPrepClinicRepo destinationPrepClinicRepo;
+
+    @Autowired
+    DestinationPrepInterruptionRepo destinationPrepInterruptionRepo;
+
+    @Autowired
+    DestinationPrepInterruptionService destinationPrepInterruptionService;
+
+    @Autowired
+    DestinationEncounterRepo destinationEncounterRepo;
+
+    @Autowired
+    DestinationEncounterService destinationEncounterService;
+
+
 
 
 
@@ -730,42 +791,446 @@ public class User {
 //        }
 //    }
 
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-    @RabbitListener(queues = MessagingConfig.HTSCLIENTQUEUE)
-    public void consumeMessageHtsClientQueue(HtsClient htsClient) {
+//    @RabbitListener(queues = MessagingConfig.HTSCLIENTQUEUE)
+//    public void consumeMessageHtsClientQueue(HtsClient htsClient) {
+//
+//        DestinationHtsClient destinationHtsClient = destinationHtsClientService.convertToDestinationHtsClient(htsClient);
+//
+//        // Check if the record with the same UUID already exists in the destination database
+//
+//
+//
+//
+//        DestinationHtsClient existingDestinationHtsClient = destinationHtsClientRepo.findByUuid(htsClient.getUuid());
+//
+//
+//        if (existingDestinationHtsClient != null) {
+//
+////            // Update the existing record with the new data
+//
+//
+//            destinationHtsClientRepo.save(existingDestinationHtsClient);
+//
+//            System.out.println("IndexElicitation record already exists in the destination database record updated: " + existingDestinationHtsClient);
+//
+//        } else {
+//            // Insert a new record in the destination database
+//            destinationHtsClient.setId(null);
+//
+//            destinationHtsClientRepo.save(destinationHtsClient);
+//
+//            System.out.println("New IndexElicitation record inserted into the destination database: " + destinationHtsClient);
+////        }
+//
+////
+//        }
+//    }
+//
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//
+//
+//    @RabbitListener(queues = MessagingConfig.INFANTARVQUEUE)
+//    public void consumeMessageHtsClientQueue(InfantArv infantArv) {
+//
+//        DestinationInfantArv destinationInfantArv = destinationInfantArvService.convertToDestinationInfantArv(infantArv);
+//
+//        // Check if the record with the same UUID already exists in the destination database
+//
+//
+//
+//
+//        DestinationInfantArv existingDestinationInfantArv = destinationInfantArvRepo.findByUuid(infantArv.getUuid());
+//
+//
+//        if (existingDestinationInfantArv != null) {
+//
+////            // Update the existing record with the new data
+//
+//
+//            destinationInfantArvRepo.save(existingDestinationInfantArv);
+//
+//            System.out.println("InfantArv record already exists in the destination database record updated: " + existingDestinationInfantArv);
+//
+//        } else {
+//            // Insert a new record in the destination database
+//            destinationInfantArv.setId(null);
+//
+//            destinationInfantArvRepo.save(destinationInfantArv);
+//
+//            System.out.println("New InfantArv record inserted into the destination database: " + destinationInfantArv);
+////        }
+//
+////
+//        }
+//    }
+//
 
-        DestinationHtsClient destinationHtsClient = destinationHtsClientService.convertToDestinationHtsClient(htsClient);
+//    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//
+//
+//
+//
+//
+//    @RabbitListener(queues = MessagingConfig.INFANTMOTHERARTQUEUE)
+//    public void consumeMessageHtsClientQueue(InfantMotherArt infantMotherArt) {
+//
+//        DestinationInfantMotherArt destinationInfantMotherArt = destinationInfantMotherArtService.convertToDestinationInfantMotherArt(infantMotherArt);
+//
+//        // Check if the record with the same UUID already exists in the destination database
+//
+//
+//
+//
+//        DestinationInfantMotherArt existingdestinationInfantMotherArt = destinationInfantMotherArtRepo.findByUuid(infantMotherArt.getUuid());
+//
+//
+//        if (existingdestinationInfantMotherArt != null) {
+//
+////            // Update the existing record with the new data
+//
+//
+//            destinationInfantMotherArtRepo.save(existingdestinationInfantMotherArt);
+//
+//            System.out.println("InfantMotherArt record already exists in the destination database record updated: " + existingdestinationInfantMotherArt);
+//
+//        } else {
+//            // Insert a new record in the destination database
+//            destinationInfantMotherArt.setId(null);
+//
+//            destinationInfantMotherArtRepo.save(destinationInfantMotherArt);
+//
+//            System.out.println("New InfantMotherArt record inserted into the destination database: " + destinationInfantMotherArt);
+////        }
+//
+////
+//        }
+//    }
+//
+
+
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+//
+//    @RabbitListener(queues = MessagingConfig.INFANTPCRTESTQUEUE)
+//    public void consumeMessageInfantPcrTestQueue(InfantPCRTest infantPCRTest) {
+//
+//        DestinationInfantPCRTest destinationInfantPCRTest = destinationInfantPCRTestService.convertToDestinationInfantPCRTest(infantPCRTest);
+//
+//        // Check if the record with the same UUID already exists in the destination database
+//
+//
+//
+//
+//        DestinationInfantPCRTest existingdestinationInfantPCRTest = destinationInfantPCRTestRepo.findByUuid(infantPCRTest.getUuid());
+//
+//
+//        if (existingdestinationInfantPCRTest != null) {
+//
+////            // Update the existing record with the new data
+//
+//
+//            destinationInfantPCRTestRepo.save(existingdestinationInfantPCRTest);
+//
+//            System.out.println("InfantPCRTest record already exists in the destination database record updated: " + existingdestinationInfantPCRTest);
+//
+//        } else {
+//            // Insert a new record in the destination database
+//            destinationInfantPCRTest.setId(null);
+//
+//            destinationInfantPCRTestRepo.save(destinationInfantPCRTest);
+//
+//            System.out.println("New InfantPCRTest record inserted into the destination database: " + destinationInfantPCRTest);
+////        }
+//
+////
+//        }
+//    }
+//
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+//    @RabbitListener(queues = MessagingConfig.INFANTVISITQUEUE)
+//    public void consumeMessageInfantVisitQueue(InfantVisit infantVisit) {
+//
+//        DestinationInfantVisit destinationInfantVisit = destinationInfantVisitService.convertToDestinationInfantVisit(infantVisit);
+//
+//        // Check if the record with the same UUID already exists in the destination database
+//
+//
+//
+//
+//        DestinationInfantVisit existingDestinationInfantVisit = destinationInfantVisitRepo.findByUuid(infantVisit.getUuid());
+//
+//
+//        if (existingDestinationInfantVisit != null) {
+//
+////            // Update the existing record with the new data
+//
+//
+//            destinationInfantVisitRepo.save(existingDestinationInfantVisit);
+//
+//            System.out.println("InfantPCRTest record already exists in the destination database record updated: " + existingDestinationInfantVisit);
+//
+//        } else {
+//            // Insert a new record in the destination database
+//            destinationInfantVisit.setId(null);
+//
+//            destinationInfantVisitRepo.save(destinationInfantVisit);
+//
+//            System.out.println("New InfantPCRTest record inserted into the destination database: " + destinationInfantVisit);
+////        }
+//
+////
+//        }
+//    }
+//
+
+//    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//
+//
+//
+//    @RabbitListener(queues = MessagingConfig.PMTCTVISITQUEUE)
+//    public void consumeMessagePmtctVisitQueue(PmtctVisit pmtctVisit) {
+//
+//        DestinationPmtctVisit destinationPmtctVisit = destinationPmtctVisitService.convertToDestinationPmtctVisit(pmtctVisit);
+//
+//        // Check if the record with the same UUID already exists in the destination database
+//
+//
+//
+//
+//        DestinationPmtctVisit existingDestinationPmtctVisit = destinationPmtctVisitRepo.findByUuid(pmtctVisit.getUuid());
+//
+//
+//        if (existingDestinationPmtctVisit != null) {
+//
+////            // Update the existing record with the new data
+//
+//
+//            destinationPmtctVisitRepo.save(existingDestinationPmtctVisit);
+//
+//            System.out.println("InfantPCRTest record already exists in the destination database record updated: " + existingDestinationPmtctVisit);
+//
+//        } else {
+//            // Insert a new record in the destination database
+//            destinationPmtctVisit.setId(null);
+//
+//            destinationPmtctVisitRepo.save(destinationPmtctVisit);
+//
+//            System.out.println("New InfantPCRTest record inserted into the destination database: " + destinationPmtctVisit);
+////        }
+//
+////
+//        }
+//    }
+//
+//
+
+
+
+
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+//
+//
+//    @RabbitListener(queues = MessagingConfig.PREPELIGIBILITYQUEUE)
+//    public void consumeMessagePrepEligibilityQueue(PrepEligibility prepEligibility) {
+//
+//        DestinationPrepEligibility destinationPrepEligibility = destinationPrepEligibilityService.convertToDestinationPrepEligibility(prepEligibility);
+//
+//        // Check if the record with the same UUID already exists in the destination database
+//
+//
+//
+//
+//        DestinationPrepEligibility existingDestinationPrepEligibility = destinationPrepEligibilityRepo.findByUuid(prepEligibility.getUuid());
+//
+//
+//        if (existingDestinationPrepEligibility != null) {
+//
+////            // Update the existing record with the new data
+//
+//
+//            destinationPrepEligibilityRepo.save(existingDestinationPrepEligibility);
+//
+//            System.out.println("InfantPCRTest record already exists in the destination database record updated: " + existingDestinationPrepEligibility);
+//
+//        } else {
+//            // Insert a new record in the destination database
+//            destinationPrepEligibility.setId(null);
+//
+//            destinationPrepEligibilityRepo.save(destinationPrepEligibility);
+//
+//            System.out.println("New InfantPCRTest record inserted into the destination database: " + destinationPrepEligibility);
+////        }
+//
+////
+//        }
+//    }
+//
+
+
+
+
+//    @RabbitListener(queues = MessagingConfig.PREPENROLLMENTQUEUE)
+//    public void consumeMessagePrepEnrollmentQueue(PrepEnrollment prepEnrollment) {
+//
+//        DestinationPrepEnrollment destinationPrepEnrollment = destinationPrepEnrollmentService.convertToDestinationPrepEnrollment(prepEnrollment);
+//
+//        // Check if the record with the same UUID already exists in the destination database
+//
+//
+//
+//
+//        DestinationPrepEnrollment existingDestinationPrepEnrollment = destinationPrepEnrollmentRepo.findByUuid(prepEnrollment.getUuid());
+//
+//
+//        if (existingDestinationPrepEnrollment != null) {
+//
+////            // Update the existing record with the new data
+//
+//
+//            destinationPrepEnrollmentRepo.save(existingDestinationPrepEnrollment);
+//
+//            System.out.println("PrepEnrollment record already exists in the destination database record updated: " + existingDestinationPrepEnrollment);
+//
+//        } else {
+//            // Insert a new record in the destination database
+//            destinationPrepEnrollment.setId(null);
+//            destinationPrepEnrollment.setCreatedBy("hard_coded_user");
+//            destinationPrepEnrollmentRepo.save(destinationPrepEnrollment);
+//
+//            System.out.println("New PrepEnrollment record inserted into the destination database: " + destinationPrepEnrollment);
+////        }
+//
+////
+//        }
+//    }
+//
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//
+//
+//    @RabbitListener(queues = MessagingConfig.PREPCLINICQUEUE)
+//    public void consumeMessagePrepClinicQueue(PrepClinic prepClinc) {
+//
+//        DestinationPrepClinic destinationPrepClinic = destinationPrepClinicService.convertToDestinationPrepClinic(prepClinc);
+//
+//        // Check if the record with the same UUID already exists in the destination database
+//
+//
+//
+//
+//        DestinationPrepClinic existingDestinationPrepClinic = destinationPrepClinicRepo.findByUuid(destinationPrepClinic.getUuid());
+//
+//
+//        if (existingDestinationPrepClinic != null) {
+//
+////            // Update the existing record with the new data
+//
+//
+//            destinationPrepClinicRepo.save(existingDestinationPrepClinic);
+//
+//            System.out.println("PrepClinic record already exists in the destination database record updated: " + existingDestinationPrepClinic);
+//
+//        } else {
+//            // Insert a new record in the destination database
+//            destinationPrepClinic.setId(null);
+//            destinationPrepClinicRepo.save(destinationPrepClinic);
+//
+//            System.out.println("New PrepClinic record inserted into the destination database: " + destinationPrepClinic);
+////        }
+//
+////
+//        }
+//    }
+//
+
+
+
+
+
+
+
+//    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//
+//
+//    @RabbitListener(queues = MessagingConfig.PREPINTERRUPTIONQUEUE)
+//    public void consumeMessagePrepClinicQueue(PrepInterruption prepInterruption) {
+//
+//        DestinationPrepInterruption destinationPrepInterruption = destinationPrepInterruptionService.convertToDestinationPrepInterruption(prepInterruption);
+//
+//        // Check if the record with the same UUID already exists in the destination database
+//
+//
+//
+//
+//        DestinationPrepInterruption existingDestinationPrepInterruption = destinationPrepInterruptionRepo.findByUuid(prepInterruption.getUuid());
+//
+//
+//        if (existingDestinationPrepInterruption != null) {
+//
+////            // Update the existing record with the new data
+//
+//
+//            destinationPrepInterruptionRepo.save(existingDestinationPrepInterruption);
+//
+//            System.out.println("PrepClinic record already exists in the destination database record updated: " + existingDestinationPrepInterruption);
+//
+//        } else {
+//            // Insert a new record in the destination database
+//            destinationPrepInterruption.setId(null);
+//            destinationPrepInterruptionRepo.save(destinationPrepInterruption);
+//
+//            System.out.println("New PrepClinic record inserted into the destination database: " + destinationPrepInterruption);
+////        }
+//
+////
+//        }
+//    }
+
+
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+    @RabbitListener(queues = MessagingConfig.PATIENTENCOUNTERQUEUE)
+    public void consumePatientEncounterQueue(Encounter encounter) {
+
+        DestinationEncounter destinationEncounter = destinationEncounterService.convertToDestinationEncounter(encounter);
 
         // Check if the record with the same UUID already exists in the destination database
 
 
 
 
-        DestinationHtsClient existingDestinationHtsClient = destinationHtsClientRepo.findByUuid(htsClient.getUuid());
+        DestinationPrepInterruption existingDestinationPrepInterruption = destinationEncounterRepo.findByUuid(encounter.getUuid());
 
 
-        if (existingDestinationHtsClient != null) {
+        if (existingDestinationPrepInterruption != null) {
 
 //            // Update the existing record with the new data
 
 
-            destinationHtsClientRepo.save(existingDestinationHtsClient);
+            destinationPrepInterruptionRepo.save(existingDestinationPrepInterruption);
 
-            System.out.println("IndexElicitation record already exists in the destination database record updated: " + existingDestinationHtsClient);
+            System.out.println("PrepClinic record already exists in the destination database record updated: " + existingDestinationPrepInterruption);
 
         } else {
             // Insert a new record in the destination database
-            destinationHtsClient.setId(null);
+            destinationEncounter.setId(null);
+            destinationEncounterRepo.save(destinationEncounter);
 
-            destinationHtsClientRepo.save(destinationHtsClient);
-
-            System.out.println("New IndexElicitation record inserted into the destination database: " + destinationHtsClient);
+            System.out.println("New PrepClinic record inserted into the destination database: " + destinationEncounter);
 //        }
 
 //
         }
     }
-
-
 
 }

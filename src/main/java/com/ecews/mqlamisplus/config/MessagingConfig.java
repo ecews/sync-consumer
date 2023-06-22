@@ -16,6 +16,8 @@ public class MessagingConfig {
 
     public static final String PATIENTQUEUE ="patient_queue";
 
+    public static final String PATIENTENCOUNTERQUEUE ="patient_encounter_queue";
+
     public static final String PATIENTVISIT ="visit_queue";
 
     public static final String BIOMETRICQUEUE ="biometric_queue";
@@ -41,6 +43,26 @@ public class MessagingConfig {
 
 
     public static final String HTSCLIENTQUEUE = "hts_client_queue";
+
+    public static final String INFANTARVQUEUE = "infant_arv_queue";
+
+    public static final String INFANTMOTHERARTQUEUE = "infant_mother_art_queue";
+
+    public static final String INFANTPCRTESTQUEUE = "infant_pcr_test_queue";
+
+    public static final String INFANTVISITQUEUE = "infant_visit_queue";
+
+    public static final String PMTCTVISITQUEUE = "pmtct_visit_queue";
+
+    public static final String PREPELIGIBILITYQUEUE = "prep_eligibility_queue";
+
+    public static final String PREPENROLLMENTQUEUE = "prep_enrollment_queue";
+
+    public static final String PREPCLINICQUEUE = "prep_clinic_queue";
+
+    public static final String PREPINTERRUPTIONQUEUE = "prep_interruption_queue";
+
+
 
 
     @Bean

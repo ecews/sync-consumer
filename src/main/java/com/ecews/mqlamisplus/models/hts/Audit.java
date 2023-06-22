@@ -29,18 +29,16 @@ public class Audit<U>
 {
     @CreatedBy
     @Column(name = "created_by", nullable = false, updatable = false)
-    @JsonIgnore
     @ToString.Exclude
     private String createdBy = SecurityUtils.getCurrentUserLogin().orElse(null);
 
 
     @JsonSerialize(using = LocalDateTimeSerializer.class)
     @JsonDeserialize(using = LocalDateTimeDeserializer.class)
-    @CreatedDate
     @Column(name = "date_created", nullable = false, updatable = false)
-    @JsonIgnore
     @ToString.Exclude
-    private LocalDateTime dateCreated;
+    @CreatedDate
+    private LocalDateTime dateCreated = LocalDateTime.now ();;
 
 
 
@@ -55,9 +53,8 @@ public class Audit<U>
 
     @JsonSerialize(using = LocalDateTimeSerializer.class)
     @JsonDeserialize(using = LocalDateTimeDeserializer.class)
-    @LastModifiedDate
     @Column(name = "date_modified")
-    @JsonIgnore
     @ToString.Exclude
-    private LocalDateTime dateModified;
+    @LastModifiedDate
+    private LocalDateTime dateModified = LocalDateTime.now ();;
 }
