@@ -2,18 +2,12 @@ package com.ecews.mqlamisplus.user;
 
 
 /*import com.ecews.mqlamisplus.models.DestinationPerson;*/
-import com.ecews.mqlamisplus.models.Person.DestinationEncounter;
-import com.ecews.mqlamisplus.models.Person.Encounter;
-import com.ecews.mqlamisplus.models.pmtc.*;
-import com.ecews.mqlamisplus.models.prep.*;
 import com.ecews.mqlamisplus.repository.*;
 import com.ecews.mqlamisplus.repository.DestinationArtPharmacyRepo.DestinationArtPharmacyRepo;
-import com.ecews.mqlamisplus.config.MessagingConfig;
 import com.ecews.mqlamisplus.repository.DestinationVisitRepo.DestinationVisitRepo;
 import com.ecews.mqlamisplus.repository.triage.DestinationVitaSignlRepo;
 import com.ecews.mqlamisplus.repository.visitrepo.VisitRepo;
 import com.ecews.mqlamisplus.service.*;
-import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import com.ecews.mqlamisplus.repository.DestinationIndexElicitationRepo;
@@ -22,8 +16,6 @@ import com.ecews.mqlamisplus.repository.DestinationIndexElicitationRepo;
 
 @Component
 public class User {
-
-
 
     @Autowired
     PersonService personService;
@@ -1199,38 +1191,38 @@ public class User {
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-    @RabbitListener(queues = MessagingConfig.PATIENTENCOUNTERQUEUE)
-    public void consumePatientEncounterQueue(Encounter encounter) {
-
-        DestinationEncounter destinationEncounter = destinationEncounterService.convertToDestinationEncounter(encounter);
-
-        // Check if the record with the same UUID already exists in the destination database
-
-
-
-
-        DestinationPrepInterruption existingDestinationPrepInterruption = destinationEncounterRepo.findByUuid(encounter.getUuid());
-
-
-        if (existingDestinationPrepInterruption != null) {
-
-//            // Update the existing record with the new data
-
-
-            destinationPrepInterruptionRepo.save(existingDestinationPrepInterruption);
-
-            System.out.println("PrepClinic record already exists in the destination database record updated: " + existingDestinationPrepInterruption);
-
-        } else {
-            // Insert a new record in the destination database
-            destinationEncounter.setId(null);
-            destinationEncounterRepo.save(destinationEncounter);
-
-            System.out.println("New PrepClinic record inserted into the destination database: " + destinationEncounter);
-//        }
-
+//    @RabbitListener(queues = MessagingConfig.PATIENTENCOUNTERQUEUE)
+//    public void consumePatientEncounterQueue(Encounter encounter) {
 //
-        }
-    }
+//        DestinationEncounter destinationEncounter = destinationEncounterService.convertToDestinationEncounter(encounter);
+//
+//        // Check if the record with the same UUID already exists in the destination database
+//
+//
+//
+//
+//        DestinationPrepInterruption existingDestinationPrepInterruption = destinationEncounterRepo.findByUuid(encounter.getUuid());
+//
+//
+//        if (existingDestinationPrepInterruption != null) {
+//
+////            // Update the existing record with the new data
+//
+//
+//            destinationPrepInterruptionRepo.save(existingDestinationPrepInterruption);
+//
+//            System.out.println("PrepClinic record already exists in the destination database record updated: " + existingDestinationPrepInterruption);
+//
+//        } else {
+//            // Insert a new record in the destination database
+//            destinationEncounter.setId(null);
+//            destinationEncounterRepo.save(destinationEncounter);
+//
+//            System.out.println("New PrepClinic record inserted into the destination database: " + destinationEncounter);
+////        }
+//
+////
+//        }
+//    }
 
 }

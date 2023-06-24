@@ -1,8 +1,6 @@
 package com.ecews.mqlamisplus.repository.triage;
 
-import com.ecews.mqlamisplus.models.biometric.DestinationBiometric;
-import com.ecews.mqlamisplus.models.triage.DestinationVitalSign;
-import com.ecews.mqlamisplus.models.visit.Visit;
+import com.ecews.mqlamisplus.models.entities.triage.DestinationVitalSign;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 

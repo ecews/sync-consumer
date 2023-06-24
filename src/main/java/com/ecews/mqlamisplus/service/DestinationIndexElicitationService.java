@@ -1,14 +1,12 @@
 package com.ecews.mqlamisplus.service;
 
 
-import com.ecews.mqlamisplus.models.hts.DestinationIndexElicitation;
-import com.ecews.mqlamisplus.models.hts.IndexElicitation;
+import com.ecews.mqlamisplus.models.entities.hts.DestinationIndexElicitation;
+import com.ecews.mqlamisplus.models.entities.hts.IndexElicitation;
 import com.ecews.mqlamisplus.repository.DestinationIndexElicitationRepo;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
 
 @Service
 public class DestinationIndexElicitationService {

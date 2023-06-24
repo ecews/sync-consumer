@@ -1,7 +1,7 @@
 package com.ecews.mqlamisplus.service;
 
-import com.ecews.mqlamisplus.models.DestinationVisit.DestinationVisit;
-import com.ecews.mqlamisplus.models.visit.Visit;
+import com.ecews.mqlamisplus.models.entities.DestinationVisit.DestinationVisit;
+import com.ecews.mqlamisplus.models.entities.visit.Visit;
 import org.springframework.stereotype.Service;
 
 @Service

@@ -1,7 +1,7 @@
 package com.ecews.mqlamisplus.service;
 
-import com.ecews.mqlamisplus.models.prep.DestinationPrepClinic;
-import com.ecews.mqlamisplus.models.prep.PrepClinic;
+import com.ecews.mqlamisplus.models.entities.prep.DestinationPrepClinic;
+import com.ecews.mqlamisplus.models.entities.prep.PrepClinic;
 import org.springframework.stereotype.Service;
 
 @Service

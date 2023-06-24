@@ -1,7 +1,7 @@
 package com.ecews.mqlamisplus.service;
 
-import com.ecews.mqlamisplus.models.hts.DestinationRiskStratification;
-import com.ecews.mqlamisplus.models.hts.RiskStratification;
+import com.ecews.mqlamisplus.models.entities.hts.DestinationRiskStratification;
+import com.ecews.mqlamisplus.models.entities.hts.RiskStratification;
 import org.springframework.stereotype.Service;
 
 @Service

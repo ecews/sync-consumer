@@ -1,10 +1,8 @@
 package com.ecews.mqlamisplus.service;
 
 
-import com.ecews.mqlamisplus.models.lims.DestinationLIMSResult;
-import com.ecews.mqlamisplus.models.lims.LIMSResult;
-import com.ecews.mqlamisplus.models.pmtc.ANC;
-import com.ecews.mqlamisplus.models.pmtc.DestinationAnc;
+import com.ecews.mqlamisplus.models.entities.pmtc.ANC;
+import com.ecews.mqlamisplus.models.entities.pmtc.DestinationAnc;
 import org.springframework.stereotype.Service;
 
 @Service

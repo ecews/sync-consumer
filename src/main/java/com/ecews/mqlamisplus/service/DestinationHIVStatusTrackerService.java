@@ -1,8 +1,8 @@
 package com.ecews.mqlamisplus.service;
 
 
-import com.ecews.mqlamisplus.models.hiv.DestinationHIVStatusTracker;
-import com.ecews.mqlamisplus.models.hiv.HIVStatusTracker;
+import com.ecews.mqlamisplus.models.entities.hiv.DestinationHIVStatusTracker;
+import com.ecews.mqlamisplus.models.entities.hiv.HIVStatusTracker;
 import org.springframework.stereotype.Service;
 
 @Service

@@ -1,8 +1,8 @@
 package com.ecews.mqlamisplus.service;
 
 
-import com.ecews.mqlamisplus.models.prep.DestinationPrepEnrollment;
-import com.ecews.mqlamisplus.models.prep.PrepEnrollment;
+import com.ecews.mqlamisplus.models.entities.prep.DestinationPrepEnrollment;
+import com.ecews.mqlamisplus.models.entities.prep.PrepEnrollment;
 import org.springframework.stereotype.Service;
 
 @Service

@@ -1,13 +1,29 @@
 package com.ecews.mqlamisplus.service;
 
+import com.blazebit.persistence.CriteriaBuilderFactory;
+import com.blazebit.persistence.view.EntityViewManager;
+import com.blazebit.persistence.view.EntityViewSetting;
 import com.ecews.mqlamisplus.models.DestinationPerson;
-import com.ecews.mqlamisplus.models.Person.Person;
+import com.ecews.mqlamisplus.models.entities.Person.Person;
+import com.ecews.mqlamisplus.models.views.person.PersonView;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
+import javax.persistence.EntityManager;
+import java.util.List;
+
+
+@RequiredArgsConstructor
 @Slf4j
 @Service
 public class PersonService {
+
+    private final CriteriaBuilderFactory cbf;
+
+    private final EntityViewManager evm;
+
+    private final EntityManager em;
 
     public DestinationPerson convertPersonToPersonCopy(Person person) {
         DestinationPerson destinationPerson = new DestinationPerson();
@@ -51,6 +67,16 @@ public class PersonService {
         destinationPerson.setFacilityId(person.getFacilityId());
 
         return destinationPerson;
+    }
+    public List<PersonView> getAllPersons(){
+
+        var settings = EntityViewSetting.create(PersonView.class);
+        var cb = cbf.create(em, PersonView.class)
+                .from(Person.class)
+                .orderByAsc("lastModifiedDate");
+
+
+        return evm.applySetting(settings, cb).getResultList();
     }
 
 }

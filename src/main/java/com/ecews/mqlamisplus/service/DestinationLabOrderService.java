@@ -1,7 +1,7 @@
 package com.ecews.mqlamisplus.service;
 
-import com.ecews.mqlamisplus.models.laboratory.DestinationLabOrder;
-import com.ecews.mqlamisplus.models.laboratory.LabOrder;
+import com.ecews.mqlamisplus.models.entities.laboratory.DestinationLabOrder;
+import com.ecews.mqlamisplus.models.entities.laboratory.LabOrder;
 import org.springframework.stereotype.Service;
 
 @Service

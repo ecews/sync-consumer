@@ -1,8 +1,8 @@
 package com.ecews.mqlamisplus.service;
 
 
-import com.ecews.mqlamisplus.models.prep.DestinationPrepInterruption;
-import com.ecews.mqlamisplus.models.prep.PrepInterruption;
+import com.ecews.mqlamisplus.models.entities.prep.DestinationPrepInterruption;
+import com.ecews.mqlamisplus.models.entities.prep.PrepInterruption;
 import org.springframework.stereotype.Service;
 
 @Service

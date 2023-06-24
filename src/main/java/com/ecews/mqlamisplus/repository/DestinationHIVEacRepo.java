@@ -1,6 +1,6 @@
 package com.ecews.mqlamisplus.repository;
 
-import com.ecews.mqlamisplus.models.hiv.DestinationHIVEac;
+import com.ecews.mqlamisplus.models.entities.hiv.DestinationHIVEac;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 

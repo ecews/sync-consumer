@@ -1,8 +1,8 @@
 package com.ecews.mqlamisplus.service;
 
 
-import com.ecews.mqlamisplus.models.laboratory.DestinationSample;
-import com.ecews.mqlamisplus.models.laboratory.Sample;
+import com.ecews.mqlamisplus.models.entities.laboratory.DestinationSample;
+import com.ecews.mqlamisplus.models.entities.laboratory.Sample;
 import org.springframework.stereotype.Service;
 
 @Service

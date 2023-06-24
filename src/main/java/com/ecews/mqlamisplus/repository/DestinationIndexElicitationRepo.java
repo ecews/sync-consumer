@@ -1,6 +1,6 @@
 package com.ecews.mqlamisplus.repository;
 
-import com.ecews.mqlamisplus.models.hts.DestinationIndexElicitation;
+import com.ecews.mqlamisplus.models.entities.hts.DestinationIndexElicitation;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 

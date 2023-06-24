@@ -1,8 +1,8 @@
 package com.ecews.mqlamisplus.service;
 
 
-import com.ecews.mqlamisplus.models.pmtc.Delivery;
-import com.ecews.mqlamisplus.models.pmtc.DestinationDelivery;
+import com.ecews.mqlamisplus.models.entities.pmtc.Delivery;
+import com.ecews.mqlamisplus.models.entities.pmtc.DestinationDelivery;
 import org.springframework.stereotype.Service;
 
 @Service

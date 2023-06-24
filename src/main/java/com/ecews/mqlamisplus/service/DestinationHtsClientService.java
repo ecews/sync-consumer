@@ -1,14 +1,11 @@
 package com.ecews.mqlamisplus.service;
 
-import com.ecews.mqlamisplus.models.Person.Person;
-import com.ecews.mqlamisplus.models.hts.DestinationHtsClient;
-import com.ecews.mqlamisplus.models.hts.HtsClient;
-import com.ecews.mqlamisplus.repository.DestinationHtsClientRepo;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.ecews.mqlamisplus.models.entities.Person.Person;
+import com.ecews.mqlamisplus.models.entities.hts.DestinationHtsClient;
+import com.ecews.mqlamisplus.models.entities.hts.HtsClient;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
-import java.util.List;
 import java.util.UUID;
 
 @Service

@@ -1,7 +1,7 @@
 package com.ecews.mqlamisplus.service;
 
-import com.ecews.mqlamisplus.models.triage.DestinationVitalSign;
-import com.ecews.mqlamisplus.models.triage.VitalSign;
+import com.ecews.mqlamisplus.models.entities.triage.DestinationVitalSign;
+import com.ecews.mqlamisplus.models.entities.triage.VitalSign;
 import org.springframework.stereotype.Service;
 
 @Service

@@ -1,8 +1,8 @@
 package com.ecews.mqlamisplus.service;
 
 
-import com.ecews.mqlamisplus.models.biometric.Biometric;
-import com.ecews.mqlamisplus.models.biometric.DestinationBiometric;
+import com.ecews.mqlamisplus.models.entities.biometric.Biometric;
+import com.ecews.mqlamisplus.models.entities.biometric.DestinationBiometric;
 import org.springframework.stereotype.Service;
 
 @Service

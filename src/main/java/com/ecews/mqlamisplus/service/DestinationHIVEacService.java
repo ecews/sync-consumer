@@ -1,7 +1,7 @@
 package com.ecews.mqlamisplus.service;
 
-import com.ecews.mqlamisplus.models.hiv.DestinationHIVEac;
-import com.ecews.mqlamisplus.models.hiv.HIVEac;
+import com.ecews.mqlamisplus.models.entities.hiv.DestinationHIVEac;
+import com.ecews.mqlamisplus.models.entities.hiv.HIVEac;
 import org.springframework.stereotype.Service;
 
 @Service

@@ -1,8 +1,8 @@
 package com.ecews.mqlamisplus.service;
 
 
-import com.ecews.mqlamisplus.models.pmtc.DestinationInfantArv;
-import com.ecews.mqlamisplus.models.pmtc.InfantArv;
+import com.ecews.mqlamisplus.models.entities.pmtc.DestinationInfantArv;
+import com.ecews.mqlamisplus.models.entities.pmtc.InfantArv;
 import org.springframework.stereotype.Service;
 
 @Service

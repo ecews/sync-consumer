@@ -1,7 +1,7 @@
 package com.ecews.mqlamisplus.service;
 
-import com.ecews.mqlamisplus.models.lims.DestinationLIMSManifest;
-import com.ecews.mqlamisplus.models.lims.LIMSManifest;
+import com.ecews.mqlamisplus.models.entities.lims.DestinationLIMSManifest;
+import com.ecews.mqlamisplus.models.entities.lims.LIMSManifest;
 import org.springframework.stereotype.Service;
 @Service
 public class DestinationLIMSManifestService {

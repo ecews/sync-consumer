@@ -1,8 +1,7 @@
 package com.ecews.mqlamisplus.service;
 
-import com.ecews.mqlamisplus.models.hiv.DestinationHivEnrollment;
-import com.ecews.mqlamisplus.models.hiv.HivEnrollment;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.ecews.mqlamisplus.models.entities.hiv.DestinationHivEnrollment;
+import com.ecews.mqlamisplus.models.entities.hiv.HivEnrollment;
 import org.springframework.stereotype.Service;
 
 @Service

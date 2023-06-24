@@ -1,7 +1,7 @@
 package com.ecews.mqlamisplus.repository;
 
 
-import com.ecews.mqlamisplus.models.prep.DestinationPrepEligibility;
+import com.ecews.mqlamisplus.models.entities.prep.DestinationPrepEligibility;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 

@@ -1,7 +1,7 @@
 package com.ecews.mqlamisplus.service;
 
-import com.ecews.mqlamisplus.models.hiv.DestinationHIVEacSession;
-import com.ecews.mqlamisplus.models.hiv.HIVEacSession;
+import com.ecews.mqlamisplus.models.entities.hiv.DestinationHIVEacSession;
+import com.ecews.mqlamisplus.models.entities.hiv.HIVEacSession;
 import org.springframework.stereotype.Service;
 
 @Service

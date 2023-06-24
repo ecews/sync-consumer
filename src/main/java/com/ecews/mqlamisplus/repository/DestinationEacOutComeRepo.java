@@ -1,8 +1,6 @@
 package com.ecews.mqlamisplus.repository;
 
-import com.ecews.mqlamisplus.models.hiv.DestinationEacOutCome;
-import com.ecews.mqlamisplus.models.hiv.EacOutCome;
-import com.ecews.mqlamisplus.models.visit.Visit;
+import com.ecews.mqlamisplus.models.entities.hiv.DestinationEacOutCome;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
